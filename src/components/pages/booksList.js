@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getBooks } from '../../actions/bookActions';
 
+import {Grid, Col, Row, Button} from 'react-bootstrap';
+
 class BooksList extends Component {
 
 	componentDidMount() {

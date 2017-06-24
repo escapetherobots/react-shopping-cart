@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getBooks } from '../../actions/bookActions';
 
+import BookItem from './bookItem';
+import BooksForm from './booksForm'
+
 import {Grid, Col, Row, Button} from 'react-bootstrap';
 
 class BooksList extends Component {
@@ -14,21 +17,43 @@ class BooksList extends Component {
 	}
 
 	render(){
+		const bookListStyles = {
+			test: {
+				color: 'blue',
+		  		// backgroundImage: 'url(' + imgUrl + ')',
+			},
+			row: {
+				marginTop: '15px',
+			}
+		  
+		}
+
+
 		const booksList = this.props.books.map( (item) => {
 			return (
 				<div key={item.id}>
-					<h1>{item.title}</h1>
-					<h2>{item.description}</h2>
-					<h2>{item.price}</h2>
+					<BookItem 
+						id={item.id}
+						title={item.title}
+						description={item.description}
+						price={item.price}
+					/>
 				</div>
 			);
 		})
 
 		return (
-			<div>
-				<h1>Hello React</h1>
-				{booksList}
-			</div>
+			<Grid>
+				<Row style={bookListStyles.row}>
+					<Col xs={12} sm={6}>
+						<BooksForm />
+					</Col>
+					<Col xs={12} sm={6} md={4} >
+						{booksList}
+					</Col>
+				</Row>
+				
+			</Grid>
 		);
 	}
 }

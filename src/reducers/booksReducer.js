@@ -15,13 +15,13 @@ export const booksReducer = (state = {books: bookData}, action) => {
 			return {books: [...state.books, ...action.payload]};
 
 		case "DELETE_BOOK":
-			var updatedList = state.books.filter( (item) => item.id !== action.payload.id);
+			var updatedList = state.books.filter( (item) => item._id !== action.payload._id);
 
 			return {books: [...updatedList]};
 
 		case "UPDATE_BOOK":
 			var books = state.books.map( (item) => {
-				if(item.id === action.payload.id){
+				if(item._id === action.payload._id){
 					return {...item, description: action.payload.description}
 				} else {
 					return item;

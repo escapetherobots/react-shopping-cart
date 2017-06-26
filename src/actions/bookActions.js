@@ -7,31 +7,32 @@ export const getBooks = () => {
 }
 
 
-export const addBook = (book) => {
+export const addBook = (/*Obj*/book) => {
 	return {
 		type: "ADD_BOOK",
 		payload: book
 	}
 }
 
-export const addBooks = (bookArr) => {
+export const addBooks = (/*Arr[]*/bookArr) => {
 	return {
 		type: "ADD_BOOKS",
 		payload: bookArr
 	}
 }
 
-export const deleteBook = (id) => {
+export const deleteBook = (/*Arr[]*/id) => {
 	return {
 		type: "DELETE_BOOK",
 		payload: id
 	}
 }
 
-export const updateBook = (id) => {
+export const updateBook = (/*Arr[]*/id) => {
 	return {
 		type: "UPDATE_BOOK",
 		payload: id
 	}
 }
+
 

@@ -20,7 +20,8 @@ import BooksList from './components/pages/booksList';
 //store.subscribe( () => console.log('current state is: ', store.getState()) );
 const middleware = applyMiddleware(logger);
 
-// CREATE STORE
+//
+// CREATE STORE - THE INITIAL STATE
 const store = createStore(reducers, middleware);
 
 

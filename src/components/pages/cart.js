@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { removeFromCart, updateCartItem } from '../../actions/cartActions';
+import { updateModal } from '../../actions/modalActions';
 
 import { Panel, Col, Row, Well, Button, ButtonGroup, Label } from 'react-bootstrap';
 
@@ -28,6 +29,17 @@ class Cart extends Component{
 
 	handleDelete(_id){
 		this.props.removeFromCart({_id})
+	}
+
+	handleModal(){
+		let modalContent = (
+			<div>
+				<h1>THANK YOU!</h1>
+				<p>Your order has been processed.</p>
+			</div>
+		);
+
+		this.props.updateModal(modalContent);
 	}
 
 	renderCart(){
@@ -72,10 +84,18 @@ class Cart extends Component{
 			);
 		});
 
-
+		console.log('total amount: ', this.props.totalAmount);
 		return (
 			<Panel header="Cart" bsStyle="primary">
 				{cartItemsList}
+				<Row>
+					<Col xs={12} md={3} mdPush={9} style={{textAlign: "right"}}>
+						<h6>Total amount: 
+							<span style={{fontSize: "24px"}}> ${this.props.totalAmount}</span>
+						</h6>
+						<Button onClick={this.handleModal.bind(this)} bsStyle="success" bsSize="small">Checkout</Button>
+					</Col>
+				</Row>
 			</Panel>
 
 		);
@@ -95,24 +115,20 @@ class Cart extends Component{
 		} else {
 			return this.renderEmpty();
 		}
-
-		return (
-			<div>
-
-			</div>
-		);
-
 	}
 }
 
+
+// REDUX HELPER FUNCTIONS
 function mapStateToProps(state){
 	return {
-		cart: state.cart.cart
+		cart: state.cart.cart,
+		totalAmount: state.cart.totalAmount
 	};
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({removeFromCart, updateCartItem}, dispatch);
+	return bindActionCreators({removeFromCart, updateCartItem, updateModal}, dispatch);
 }
 
 

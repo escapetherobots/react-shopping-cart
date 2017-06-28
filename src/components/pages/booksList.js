@@ -2,15 +2,15 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { bindActionCreators } from 'redux';
-
-
 
 //COMPONENTS
 import BookItem from './bookItem';
 import BooksForm from './booksForm';
 import Cart from './cart';
-import AnimationTest from './AnimationTest';
+import AnimationTest from './animationTest';
+import Modal from './modal';
 
 //ACTIONS
 import { getBooks } from '../../actions/bookActions';
@@ -65,9 +65,12 @@ class BooksList extends Component {
 					<Col xs={12} sm={6}>
 						<BooksForm />
 					</Col>
-					<Col xs={12} sm={6} md={4} >
+					<Col xs={12} sm={6} >
 						{booksList}
 					</Col>
+				</Row>
+				<Row>
+					<Modal />
 				</Row>
 				
 			</Grid>

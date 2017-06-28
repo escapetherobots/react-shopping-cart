@@ -31,7 +31,11 @@ class BooksList extends Component {
 			},
 			row: {
 				marginTop: '15px',
+			},
+			toprow: {
+				textAlign: 'center',
 			}
+
 		  
 		}
 
@@ -51,7 +55,7 @@ class BooksList extends Component {
 
 		return (
 			<Grid>
-				<Row style={bookListStyles.row}>
+				<Row style={bookListStyles.toprow}>
 					<Col >
 						<AnimationTest />
 					</Col>

@@ -15,6 +15,7 @@ export const booksReducer = (state = {books: bookData}, action) => {
 			return {books: [...state.books, ...action.payload]};
 
 		case "DELETE_BOOK":
+			console.log('book reducer', action.payload);
 			var updatedList = state.books.filter( (item) => item._id !== action.payload._id);
 
 			return {books: [...updatedList]};

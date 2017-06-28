@@ -1,26 +1,26 @@
 export const bookData = [
 	{
 		_id: 4,
-		title: 'Mad Max',
-		description: 'beyond thunder dome',
+		title: 'A Mind for Numbers',
+		description: 'How to learn math even if you flunked algebra',
 		price: 14.95
 	},
 	{
 		_id: 5,
-		title: 'Monsters Inc',
-		description: 'Wazowskis adventure',
+		title: 'Grit',
+		description: 'A book by Angela Ducksworth',
 		price: 7.95
 	},
 	{
 		_id: 6,
-		title: 'War',
-		description: 'Sun Tsu',
+		title: 'Art of War',
+		description: 'Sun Tzu',
 		price: 17.95
 	},
 	{
 		_id: 7,
-		title: 'Peace',
-		description: 'Ghandi',
+		title: 'The Alchemist',
+		description: 'Paolo Coehlo',
 		price: 22.95
 	}
 ];

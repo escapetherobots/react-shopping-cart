@@ -15,6 +15,8 @@ import * as cartActions from './actions/cartActions';
 import * as bookActions from './actions/bookActions';
 
 import BooksList from './components/pages/booksList';
+import Menu from './components/menu';
+import Footer from './components/footer';
 
 // SUBSCRIBE TO CHANGES IN STATE
 //store.subscribe( () => console.log('current state is: ', store.getState()) );
@@ -28,7 +30,11 @@ const store = createStore(reducers, middleware);
 
 render(
 	<Provider store={store}>
-		<BooksList />
+		<div>
+			<Menu />
+			<BooksList />
+			<Footer />
+		</div>
 	</Provider>,
 	document.getElementById('app')
 );

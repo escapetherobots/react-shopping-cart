@@ -1,6 +1,7 @@
 "use strict"
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { findDOMNode } from 'react-dom';
@@ -30,12 +31,12 @@ class BooksForm extends Component{
 	}
 
 	render(){
-		const modBooksList = [{title: 'Choose a book'}, ...this.props.books]
+		const modBooksList = [{title: 'Choose a book', _id: 0}, ...this.props.books]
 
 		const booksList = modBooksList.map( (item, index) => {
 			if(index === 0) {
 				return (
-					<option selected disabled>{item.title}</option>
+					<option value="" placeholder="something" hidden>{item.title}</option>
 				);
 			} else {
 				return (

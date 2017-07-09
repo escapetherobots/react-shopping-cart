@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, NavItem, Navbar, Badge, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 
@@ -46,7 +47,9 @@ class Menu extends Component{
                   <NavItem eventKey={1}>Admin</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/cart">
-                  <NavItem eventKey={2}>Cart <Badge className="badge">1</Badge></NavItem>
+                  <NavItem eventKey={2}>Cart 
+                    { (this.props.totalQty > 0)? (<Badge className="badge"> {this.props.totalQty}</Badge>) : ('')}
+                  </NavItem>
                 </LinkContainer>
               </Nav>
             </Navbar.Collapse>
@@ -57,4 +60,10 @@ class Menu extends Component{
 	}
 }
 
-export default Menu;
+function mapStateToProps(state){
+  return {
+    totalQty: state.cart.totalQty
+  }
+}
+
+export default connect(mapStateToProps)(Menu);

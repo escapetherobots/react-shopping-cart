@@ -23,7 +23,7 @@ class Menu extends Component{
             <Navbar.Header>
               
               <Navbar.Brand>
-                <a onClick={this.goToRoot}>
+                <a style={{cursor: 'pointer'}} onClick={this.goToRoot}>
                   React-Bootstrap
                 </a>
               </Navbar.Brand>

@@ -9,7 +9,7 @@ var app = express();
 // MIDDLEWARE TO DEFINE STATIC FILES OR IMAGES
 app.use(express.static('public'));
 
-app.get('/', function(req,res){
+app.get('*', function(req,res){
 	res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 });
 

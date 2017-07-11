@@ -3,10 +3,10 @@
 import {bookData} from '../localData/';
 
 // DEFINE REDUCER
-export const booksReducer = (state = {books: bookData}, action) => {
+export const booksReducer = (state = {books: []}, action) => {
 	switch(action.type){
 		case "GET_BOOKS":
-			return {...state, books: [...state.books]}
+			return {...state, books: [...action.payload]}
 
 		case "ADD_BOOK":
 			return {books: [...state.books, action.payload]};
@@ -16,7 +16,7 @@ export const booksReducer = (state = {books: bookData}, action) => {
 
 		case "DELETE_BOOK":
 			console.log('book reducer', action.payload);
-			var updatedList = state.books.filter( (item) => item._id !== action.payload._id);
+			var updatedList = state.books.filter( (item) => item._id !== action.payload);
 
 			return {books: [...updatedList]};
 

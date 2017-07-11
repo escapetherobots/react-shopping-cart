@@ -15,7 +15,7 @@ class BooksForm extends Component{
 	handleDelete(){
 		let book = findDOMNode(this.refs.removeItem).value;
 
-		this.props.deleteBook({_id:+book});
+		this.props.deleteBook({_id: book});
 
 	}
 

@@ -10,6 +10,7 @@ import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-ro
 //REDUX, MIDDLEWARE AND REDUCERS
 import { applyMiddleware, createStore } from 'redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import reducers from './reducers/';
 
 // ACTIONS
@@ -24,7 +25,7 @@ import Main from './main';
 
 // SUBSCRIBE TO CHANGES IN STATE
 //store.subscribe( () => console.log('current state is: ', store.getState()) );
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(logger, thunk);
 
 //
 // CREATE STORE - THE INITIAL STATE

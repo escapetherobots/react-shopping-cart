@@ -12,7 +12,7 @@ import { Panel, Col, Row, Well, Button, ButtonGroup, Label } from 'react-bootstr
 class Cart extends Component{
 
 	onIncrement(_id){
-		this.props.updateCartItem(_id, 1);
+		this.props.updateCartItem(_id, 1, this.props.cart);
 	}
 
 	onDecrement(_id){
@@ -21,7 +21,7 @@ class Cart extends Component{
 		});
 
 		if(this.props.cart[itemIndex].quantity > 1){
-			this.props.updateCartItem(_id, -1);
+			this.props.updateCartItem(_id, -1, this.props.cart);
 		} else {
 			this.props.removeFromCart({_id});
 		}

@@ -35,10 +35,11 @@ class BookItem extends Component{
 				return item._id === _id;
 			});
 
+			// -1 means not found on a findIndex method
 			if(cartItemIndex === -1){
 				this.props.addToCart(book);
 			} else {
-				this.props.updateCartItem(_id, 1);
+				this.props.updateCartItem(_id, 1, this.props.cart);
 			}
 
 		} else {

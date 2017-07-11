@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const getBooks = () => {
 	return (dispatch) => {
-		axios.get("/books")
+		axios.get("/api/books")
 			.then(
 				(response) => {
 					dispatch({
@@ -28,7 +28,7 @@ export const getBooks = () => {
 
 export const addBook = (/*Obj*/book) => {
 	return (dispatch) => {
-		axios.post("/books", book)
+		axios.post("/api/books", book)
 			.then(
 				(response) => {
 					dispatch({
@@ -63,7 +63,7 @@ export const addBooks = (/*Arr[]*/bookArr) => {
 
 export const deleteBook = (/*object*/{_id}) => {
 	return (dispatch) => {
-		axios.delete('/books/' + _id)
+		axios.delete('/api/books/' + _id)
 			.then(
 				(response) => {
 					dispatch({

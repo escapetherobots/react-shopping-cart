@@ -18,10 +18,20 @@ export const removeFromCart = (/*obj id*/_id) => {
 
 
 //UPDATE CART
-export const updateCartItem = (/**/_id, units) => {
+export const updateCartItem = (/**/_id, units, cartArr) => {
+	const currentCart = cartArr;
+
+	const updatedCart = currentCart.map( (item) => {
+		if( item._id === _id) {
+			let newQty = item.quantity + units;
+			return {...item, quantity: newQty};
+		} else {
+			return {...item}
+		}
+	});
+
 	return {
 		type: "UPDATE_CART_ITEM",
-		_id,
-		units
+		payload: updatedCart
 	}
 }

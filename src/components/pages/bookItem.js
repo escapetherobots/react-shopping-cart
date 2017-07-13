@@ -20,11 +20,11 @@ class BookItem extends Component{
 		e.preventDefault();
 
 		const book = {
-			_id: this.props._id,
-			title: this.props.title,
-			description: this.props.description,
-			price: this.props.price,
-			quantity: 1
+				_id: this.props._id,
+				title: this.props.title,
+				description: this.props.description,
+				price: this.props.price,
+				quantity: 1
 		};
 
 		//CHECK IF CART IS EMPTY
@@ -39,7 +39,7 @@ class BookItem extends Component{
 			if(cartItemIndex === -1){
 				this.props.addToCart(book);
 			} else {
-				this.props.updateCartItem(_id, 1, this.props.cart);
+				this.props.updateCartItem(_id, 1);
 			}
 
 		} else {

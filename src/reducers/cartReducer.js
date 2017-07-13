@@ -26,29 +26,35 @@ export function totals(itemArr){
 //CART REDUCERS
 export const cartReducer = (state = {cart: []}, action) => {
 	switch(action.type){
-		case "ADD_TO_CART":
-			const addedItemsList = [...state.cart, action.payload];
-
-			return {
-				cart: addedItemsList,
-				totalAmount: totals(addedItemsList).amount,
-				totalQty: totals(addedItemsList).qty
-			};
-
-		case "REMOVE_FROM_CART":
-			const itemsNotRemoved = state.cart.filter( (item) => item._id !== action.payload._id);
-
-			return {
-				cart: itemsNotRemoved,
-				totalAmount: totals(itemsNotRemoved).amount,
-				totalQty: totals(itemsNotRemoved).qty
-			};
-		
-		case "UPDATE_CART_ITEM":
-
+		case "GET_CART":
 			return {
 				...state,
 				cart: action.payload,
+				totalAmount: totals(action.payload).amount,
+				totalQty: totals(action.payload).qty
+			};
+
+
+		case "ADD_TO_CART":
+			return {
+				...state,
+				cart: action.payload, //should be an array
+				totalAmount: totals(action.payload).amount,
+				totalQty: totals(action.payload).qty
+			};
+
+		case "REMOVE_FROM_CART":
+			return {
+				...state,
+				cart: action.payload, //should be an array
+				totalAmount: totals(action.payload).amount,
+				totalQty: totals(action.payload).qty
+			};
+		
+		case "UPDATE_CART_ITEM":
+			return {
+				...state,
+				cart: action.payload, //should be an array
 				totalAmount: totals(action.payload).amount,
 				totalQty: totals(action.payload).qty
 			};

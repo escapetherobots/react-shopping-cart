@@ -4,15 +4,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { removeFromCart, updateCartItem } from '../../actions/cartActions';
+import { removeFromCart, updateCartItem, getCart } from '../../actions/cartActions';
 import { updateModal } from '../../actions/modalActions';
 
 import { Panel, Col, Row, Well, Button, ButtonGroup, Label } from 'react-bootstrap';
 
 class Cart extends Component{
 
+	componentDidMount() {
+		// get any persistant items from the users session
+		this.props.getCart();
+	}
+
 	onIncrement(_id){
-		this.props.updateCartItem(_id, 1, this.props.cart);
+		this.props.updateCartItem(_id, 1);
 	}
 
 	onDecrement(_id){
@@ -21,15 +26,15 @@ class Cart extends Component{
 		});
 
 		if(this.props.cart[itemIndex].quantity > 1){
-			this.props.updateCartItem(_id, -1, this.props.cart);
+			this.props.updateCartItem(_id, -1);
 		} else {
-			this.props.removeFromCart({_id});
+			this.props.removeFromCart(_id);
 		}
 		
 	}
 
 	handleDelete(_id){
-		this.props.removeFromCart({_id})
+		this.props.removeFromCart(_id);
 	}
 
 	handleModal(){
@@ -46,7 +51,7 @@ class Cart extends Component{
 	renderCart(){
 		const cartItemsList = this.props.cart.map( (item) => {
 			return (
-				<Panel key={item.id}>
+				<Panel key={item._id}>
 					<Row>
 						<Col xs={12} sm={4}>
 							<h6>{item.title}</h6><span>   </span>
@@ -129,7 +134,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({removeFromCart, updateCartItem, updateModal}, dispatch);
+	return bindActionCreators({removeFromCart, updateCartItem, updateModal, getCart}, dispatch);
 }
 
 

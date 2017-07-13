@@ -36,11 +36,11 @@ class BooksForm extends Component{
 		const booksList = modBooksList.map( (item, index) => {
 			if(index === 0) {
 				return (
-					<option value="" placeholder="something" hidden>{item.title}</option>
+					<option key={item._id} value="" placeholder="something" hidden>{item.title}</option>
 				);
 			} else {
 				return (
-					<option value={item._id}>{item.title}</option>
+					<option key={item._id} value={item._id}>{item.title}</option>
 				);
 			}
 			

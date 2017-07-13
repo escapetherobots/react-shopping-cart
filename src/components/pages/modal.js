@@ -21,7 +21,6 @@ class ModalComponent extends Component{
 	}
 
 	render(){
-		console.log('modal state: >>', this.state);
 		const modalInstance = (
 		  <div className="static-modal">
 		    <Modal show={this.props.modal.showModal} onHide={this.close.bind(this)}>

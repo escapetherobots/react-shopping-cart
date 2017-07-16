@@ -26,3 +26,13 @@ body {
   opacity: 2;
   transition: opacity 5s ease-in;
 }
+
+button.link{
+	background: none;
+	border: none;
+	color: white;
+	padding: 3;
+	margin: 0;
+	outline: none;
+	outline-offset: 0;
+}

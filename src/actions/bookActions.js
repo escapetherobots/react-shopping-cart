@@ -93,3 +93,10 @@ export const updateBook = (/*Arr[]*/id) => {
 }
 
 
+export const resetButton = () => {
+	return {
+		type: "RESET_BUTTON",
+	}
+}
+
+

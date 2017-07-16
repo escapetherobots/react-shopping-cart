@@ -16,7 +16,34 @@ import Modal from './modal';
 //ACTIONS
 import { getBooks } from '../../actions/bookActions';
 
-import {Grid, Col, Row, Button} from 'react-bootstrap';
+import {Carousel,Grid, Col, Row, Button} from 'react-bootstrap';
+
+const carouselInstance = (
+  <Carousel>
+    <Carousel.Item>
+      <img width={900} height={300} alt="900x500" src="/images/book1.jpg"/>
+      <Carousel.Caption>
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item>
+      <img width={900} height={300} alt="900x500" src="/images/book2.jpg"/>
+      <Carousel.Caption>
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+    <Carousel.Item>
+      <img width={900} height={300} alt="900x500" src="/images/book3.jpg"/>
+      <Carousel.Caption>
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </Carousel.Caption>
+    </Carousel.Item>
+  </Carousel>
+);
+
 
 class BooksList extends Component {
 
@@ -35,6 +62,12 @@ class BooksList extends Component {
 			},
 			toprow: {
 				textAlign: 'center',
+			},
+			truncate: {
+				width: '100px',
+  				whiteSpace: 'nowrap',
+  				overflow: 'hidden',
+  				textOverflow: 'ellipsis'
 			}
 
 		  
@@ -43,14 +76,15 @@ class BooksList extends Component {
 
 		const booksList = this.props.books.map( (item) => {
 			return (
-				<div key={item._id}>
+				<Col xs={12} sm={6} key={item._id}>
 					<BookItem 
 						_id={item._id}
 						title={item.title}
 						description={item.description}
+						images={item.images}
 						price={item.price}
 					/>
-				</div>
+				</Col>
 			);
 		})
 
@@ -61,18 +95,16 @@ class BooksList extends Component {
 						<AnimationTest />
 					</Col>
 				</Row>
+				<Row>
+					{carouselInstance}
+				</Row>
 				<Row style={bookListStyles.row}>
 					<Col >
 						<Cart />
 					</Col>
 				</Row>
 				<Row style={bookListStyles.row}>
-					<Col xs={12} sm={6}>
-						<BooksForm />
-					</Col>
-					<Col xs={12} sm={6} >
-						{booksList}
-					</Col>
+					{booksList}
 				</Row>
 				<Row>
 					<Modal />

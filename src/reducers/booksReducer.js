@@ -8,12 +8,29 @@ export const booksReducer = (state = {books: []}, action) => {
 		case "GET_BOOKS":
 			return {...state, books: [...action.payload]}
 
+		
+
 		case "ADD_BOOK":
-			return {books: [...state.books, action.payload]};
+			return {
+				...state, 
+				books: [...state.books, action.payload],
+				msg: 'Saved! Click to continue',
+				style: 'success',
+				validation: 'success'
+			};
 
 		case "ADD_BOOKS":
-			return {books: [...state.books, ...action.payload]};
+			return {...state, books: [...state.books, ...action.payload]};
 
+		case "POST_BOOK_REJECTED":
+			return {...state, msg: 'Please, try again', style: 'danger', validation: 'error'}
+
+		case "RESET_BUTTON":
+			return {...state, msg: null, style: null, validation: null}		
+
+		
+
+		
 		case "DELETE_BOOK":
 			var updatedList = state.books.filter( (item) => item._id !== action.payload);
 

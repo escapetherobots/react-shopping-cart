@@ -61,6 +61,27 @@ app.get('/cart', function(req, res){
 
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// IMAGES API
+app.get('/images', function(req, res){
+	const imgFolder = __dirname + '/public/images';
+	// require file system from node
+	const fs = require('fs');
+	fs.readdir(imgFolder, function(err, files){
+		if(err){
+			return console.log('File Reader Error:',err);
+		}
+		
+		const filesArr = files.map( function(item){
+			return {name: item};
+		});
+
+		res.json(filesArr);
+	});
+});
+
+
+
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // API schema
 var Books = require('./models/books.js');
 
@@ -126,7 +147,8 @@ app.delete('/books/:_id', function(req, res){
 	//Mongo Method
 	Books.remove(query, function(err, books){
 		if(err){
-			throw err;
+			//throw err;
+			console.log('# API Delete Books', err);
 		}
 		res.json(books);
 	});

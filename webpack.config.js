@@ -12,7 +12,7 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'public')
 	},
-	watch: checkEnv,
+	watch: false,
 	module: {
 		loaders: [
 			{

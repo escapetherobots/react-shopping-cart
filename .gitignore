@@ -8,5 +8,4 @@ npm-debug.log
 *.iml
 /.idea
 /config
-/public/images
 /src/localData

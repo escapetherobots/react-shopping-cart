@@ -6,6 +6,7 @@ var logger = require('morgan');
 // store user sessions in mongoDB
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const myMongoDB = require('./src/localData/configData');
 
 var app = express();
 
@@ -20,7 +21,8 @@ app.use(cookieParser());
 //=======================================
 // APIs 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/bookshop');
+//mongoose.connect('mongodb://localhost:27017/bookshop');
+mongoose.connect(myMongoDB.configData);
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Setup Sessions Middleware

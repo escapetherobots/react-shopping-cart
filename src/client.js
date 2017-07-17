@@ -18,29 +18,19 @@ import * as cartActions from './actions/cartActions';
 import * as bookActions from './actions/bookActions';
 
 // COMPONENTS
-import BooksList from './components/pages/booksList';
-import Cart from './components/pages/cart';
-import BooksForm from './components/pages/booksForm';
-import Main from './main';
-
+import routes from './routes';
 // SUBSCRIBE TO CHANGES IN STATE
 //store.subscribe( () => console.log('current state is: ', store.getState()) );
 const middleware = applyMiddleware(logger, thunk);
 
 //
-// CREATE STORE - THE INITIAL STATE
-const store = createStore(reducers, middleware);
+// PASS INITIAL STATE FROM SERVER STORE!!!
+const initialState = window.INITIAL_STATE;
+const store = createStore(reducers, initialState, middleware);
 
 const Routes = (
 	<Provider store={store}>
-		<Router history={browserHistory}>
-			<Route path="/" component={Main}>
-				<IndexRoute component={BooksList} />
-				<Route path="/admin" component={BooksForm}/>
-				<Route path="/cart" component={Cart}/>
-
-			</Route>
-		</Router>
+		{routes}
 	</Provider>
 );
 

@@ -1,3 +1,5 @@
+var env = require('node-env-file');
+
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -6,7 +8,6 @@ var logger = require('morgan');
 // store user sessions in mongoDB
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const myMongoDB = require('./src/localData/configData');
 
 var app = express();
 
@@ -15,14 +16,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+try {
+	env(__dirname + '/config/productionDB.env');
+} catch (e) {
+	console.log('no config file found');
+}
 
 //=======================================
 //=======================================
 // APIs 
 var mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost:27017/bookshop');
-mongoose.connect(myMongoDB.configData);
+mongoose.connect(process.env.PRODUCTION_DB);
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Setup Sessions Middleware

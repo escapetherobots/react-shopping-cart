@@ -2,6 +2,8 @@ var path = require('path');
 
 const webpack = require('webpack');
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 module.exports = {
 	entry: './src/client.js',
 	output: {
@@ -9,6 +11,13 @@ module.exports = {
 		path: path.resolve(__dirname, 'public')
 	},
 	watch: true,
+	plugins: [
+		new webpack.optimize.UglifyJsPlugin({
+			compressor: {
+				warnings: false
+			}
+		})
+	],
 	module: {
 		loaders: [
 			{

@@ -9,7 +9,9 @@ import { Router, Route, IndexRoute, browserHistory, hashHistory } from 'react-ro
 
 //REDUX, MIDDLEWARE AND REDUCERS
 import { applyMiddleware, createStore } from 'redux';
-import logger from 'redux-logger';
+//import logger from 'redux-logger';
+
+
 import thunk from 'redux-thunk';
 import reducers from './reducers/';
 
@@ -21,7 +23,9 @@ import * as bookActions from './actions/bookActions';
 import routes from './routes';
 // SUBSCRIBE TO CHANGES IN STATE
 //store.subscribe( () => console.log('current state is: ', store.getState()) );
-const middleware = applyMiddleware(logger, thunk);
+
+//const middleware = applyMiddleware(thunk);
+const middleware = applyMiddleware(thunk);
 
 //
 // PASS INITIAL STATE FROM SERVER STORE!!!

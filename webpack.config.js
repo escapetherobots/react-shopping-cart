@@ -13,13 +13,6 @@ module.exports = {
 		path: path.resolve(__dirname, 'public')
 	},
 	watch: checkEnv,
-	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
-			compressor: {
-				warnings: false
-			}
-		})
-	],
 	module: {
 		loaders: [
 			{

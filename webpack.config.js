@@ -4,13 +4,15 @@ const webpack = require('webpack');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+const checkEnv = process.env.NODE_ENV === 'development'? true : false;
+
 module.exports = {
 	entry: './src/client.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'public')
 	},
-	watch: true,
+	watch: checkEnv,
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
 			compressor: {
